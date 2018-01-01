@@ -1,0 +1,20 @@
+use_frameworks!
+platform :ios, '10.0'
+inhibit_all_warnings!
+
+post_install do | installer |
+  print "SQLCipher: link Pods/Headers/sqlite3.h"
+  system "mkdir -p Pods/Headers/Private && ln -s ../../SQLCipher/sqlite3.h Pods/Headers/Private"
+end
+
+target 'ios-fmdb-sqlcipher' do
+
+  # Pods for ios-fmdb-sqlcipher
+  pod 'FMDB/SQLCipher', '2.7.2'
+
+  target 'ios-fmdb-sqlcipherTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
