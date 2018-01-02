@@ -17,6 +17,8 @@
 		B6A27F901FFA0E9100980B4C /* FolderDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A27F8F1FFA0E9100980B4C /* FolderDao.swift */; };
 		B6A27F921FFA0E9800980B4C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A27F911FFA0E9800980B4C /* Task.swift */; };
 		B6A27F941FFA0EA000980B4C /* TaskDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A27F931FFA0EA000980B4C /* TaskDao.swift */; };
+		B6A27F991FFB74CE00980B4C /* SQLStatementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A27F981FFB74CE00980B4C /* SQLStatementsTests.swift */; };
+		B6A27F9B1FFB756F00980B4C /* SQLEncryptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A27F9A1FFB756F00980B4C /* SQLEncryptionTests.swift */; };
 		B6B5049F1FF9F51F0003968A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5049E1FF9F51F0003968A /* AppDelegate.swift */; };
 		B6B504A11FF9F51F0003968A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B504A01FF9F51F0003968A /* ViewController.swift */; };
 		B6B504A41FF9F51F0003968A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6B504A21FF9F51F0003968A /* Main.storyboard */; };
@@ -50,6 +52,8 @@
 		B6A27F8F1FFA0E9100980B4C /* FolderDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderDao.swift; sourceTree = "<group>"; };
 		B6A27F911FFA0E9800980B4C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B6A27F931FFA0EA000980B4C /* TaskDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDao.swift; sourceTree = "<group>"; };
+		B6A27F981FFB74CE00980B4C /* SQLStatementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLStatementsTests.swift; sourceTree = "<group>"; };
+		B6A27F9A1FFB756F00980B4C /* SQLEncryptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLEncryptionTests.swift; sourceTree = "<group>"; };
 		B6B5049B1FF9F51F0003968A /* ios-fmdb-sqlcipher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-fmdb-sqlcipher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6B5049E1FF9F51F0003968A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6B504A01FF9F51F0003968A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				B6B504B51FF9F51F0003968A /* Info.plist */,
+				B6A27F9A1FFB756F00980B4C /* SQLEncryptionTests.swift */,
+				B6A27F981FFB74CE00980B4C /* SQLStatementsTests.swift */,
 			);
 			path = "ios-fmdb-sqlcipherTests";
 			sourceTree = "<group>";
@@ -253,6 +259,7 @@
 					};
 					B6B504AE1FF9F51F0003968A = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = B6B5049A1FF9F51F0003968A;
 					};
@@ -438,6 +445,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6A27F991FFB74CE00980B4C /* SQLStatementsTests.swift in Sources */,
+				B6A27F9B1FFB756F00980B4C /* SQLEncryptionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,12 +625,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PCCZJUYRT6;
 				INFOPLIST_FILE = "ios-fmdb-sqlcipherTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.st-ventures.ios-fmdb-sqlcipherTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ios-fmdb-sqlcipher.app/ios-fmdb-sqlcipher";
@@ -634,6 +645,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PCCZJUYRT6;
 				INFOPLIST_FILE = "ios-fmdb-sqlcipherTests/Info.plist";
