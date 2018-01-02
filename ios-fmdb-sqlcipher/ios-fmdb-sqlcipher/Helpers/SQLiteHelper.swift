@@ -23,11 +23,11 @@ final class SQLiteHelper {
         fmdb = FMDatabase(path: Paths.sqliteDB())
         fmdb.traceExecution = true
 
-        var result = self.create(sql: Sql.createTaskTable)
+        var result = self.create(sql: Sql.Task.createTaskTable)
         if !result {
             fatalError("taskテーブル生成失敗")
         }
-        result = self.create(sql: Sql.createFolderTable)
+        result = self.create(sql: Sql.Folder.createFolderTable)
         if !result {
             fatalError("folderテーブル生成失敗")
         }
@@ -39,8 +39,8 @@ final class SQLiteHelper {
     }
     
     @discardableResult func dbOpen() -> Bool {
-        let result = fmdb.open()
-        fmdb.setKey(Sql.encryptionKey)
+        var result = fmdb.open()
+        result = fmdb.setKey(Sql.encryptionKey)
         return result
     }
 

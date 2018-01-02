@@ -15,7 +15,7 @@ final class TaskDao {
         guard let title = task.title, let modifyDate = task.modifyDate else {
             return false
         }
-        let insertTaskSql = WriteTranElements(sql: Sql.insertTask, arguments: [task.folderId, title, modifyDate])
+        let insertTaskSql = WriteTranElements(sql: Sql.Task.insertTask, arguments: [task.folderId, title, modifyDate])
         return SQLiteHelper.shared.writeTransaction(sqls: [insertTaskSql])
     }
     
@@ -23,14 +23,14 @@ final class TaskDao {
         guard let title = task.title, let modifyDate = task.modifyDate else {
             return false
         }
-        let updateTaskSql = WriteTranElements(sql: Sql.updateTask, arguments: [title, modifyDate, task.taskId])
+        let updateTaskSql = WriteTranElements(sql: Sql.Task.updateTask, arguments: [title, modifyDate, task.taskId])
         return SQLiteHelper.shared.writeTransaction(sqls: [updateTaskSql])
     }
     
     static func selectAllFromFolder(folderId: Int32) -> [Task]? {
         var resultArray = [Task]()
         SQLiteHelper.shared.dbOpen()
-        guard let results = SQLiteHelper.shared.fmdb.executeQuery(Sql.selectAllTasksFromFolder,
+        guard let results = SQLiteHelper.shared.fmdb.executeQuery(Sql.Task.selectAllTasksFromFolder,
                                                                   withArgumentsIn: [folderId]) else {
                                                                     return nil
         }
@@ -44,7 +44,7 @@ final class TaskDao {
     
     static func selectById(taskId: Int32) -> Task? {
         SQLiteHelper.shared.dbOpen()
-        guard let results = SQLiteHelper.shared.fmdb.executeQuery(Sql.selectByTaskId,
+        guard let results = SQLiteHelper.shared.fmdb.executeQuery(Sql.Task.selectByTaskId,
                                                                   withArgumentsIn: [taskId]) else {
                                                                     return nil
         }
@@ -57,17 +57,18 @@ final class TaskDao {
     }
     
     @discardableResult static func deleteAll() -> Bool {
-        let deleteAllTasksSql = WriteTranElements(sql: Sql.deleteAllTasks, arguments: [])
+        let deleteAllTasksSql = WriteTranElements(sql: Sql.Task.deleteAllTasks, arguments: [])
         return SQLiteHelper.shared.writeTransaction(sqls: [deleteAllTasksSql])
     }
     
     @discardableResult static func deleteAllFromFolder(folderId: Int32) -> Bool {
-        let deleteAllTasksFromFolderSql = WriteTranElements(sql: Sql.deleteAllTasksFromFolder, arguments: [folderId])
+        let deleteAllTasksFromFolderSql = WriteTranElements(sql: Sql.Task.deleteAllTasksFromFolder,
+                                                            arguments: [folderId])
         return SQLiteHelper.shared.writeTransaction(sqls: [deleteAllTasksFromFolderSql])
     }
     
     @discardableResult static func deleteById(taskId: Int32) -> Bool {
-        let deleteByTaskIdSql = WriteTranElements(sql: Sql.deleteByTaskId, arguments: [taskId])
+        let deleteByTaskIdSql = WriteTranElements(sql: Sql.Task.deleteByTaskId, arguments: [taskId])
         return SQLiteHelper.shared.writeTransaction(sqls: [deleteByTaskIdSql])
     }
 }
